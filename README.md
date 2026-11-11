@@ -1,64 +1,28 @@
-<!-- markdownlint-disable-file first-line-heading -->
-<a href="https://terraform.io">
-    <img src=".github/tf.png" alt="Terraform logo" title="Terraform" align="left" height="50" />
-</a>
 
-# Terraform Provider for Azure (Resource Manager)
+# Repository Mirror Notice
 
-The AzureRM Terraform Provider allows managing resources within Azure Resource Manager.
+This repository is an unofficial mirror of the upstream
+HashiCorp AzureRM Terraform Provider.
 
-When using version 5.0 of the AzureRM Provider we recommend using the latest version of Terraform Core ([the latest version can be found here](https://developer.hashicorp.com/terraform/install)).
+## Upstream Repository
+https://github.com/hashicorp/terraform-provider-azurerm
 
-* [Terraform Website](https://www.terraform.io)
-* [AzureRM Provider Documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
-* [AzureRM Provider Usage Examples](https://github.com/hashicorp/terraform-provider-azurerm/tree/main/examples)
-* [Slack Workspace for Contributors](https://terraform-azure.slack.com) ([Request Invite](https://join.slack.com/t/terraform-azure/shared_invite/zt-3qcv2dj6v-aKas6O6FSBZaxSSZph~Uvg))
+## Purpose
+- Learning and technical reference
+- Studying AzureRM provider implementation
+- Tracking upstream changes
+- Exploring potential open-source contributions
 
-## Usage Example
+## Ownership and Attribution
+The original provider implementation is maintained by HashiCorp
+and its contributors.
 
-```hcl
-# 1. Specify the version of the AzureRM Provider to use
-terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      version = "=5.0.0"
-    }
-  }
-}
+This repository does not claim ownership of the upstream code.
 
-# 2. Configure the AzureRM Provider
-provider "azurerm" {
-  # The AzureRM Provider supports authenticating using via the Azure CLI, a Managed Identity
-  # and a Service Principal. More information on the authentication methods supported by
-  # the AzureRM Provider can be found here:
-  # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs#authenticating-to-azure
+## Modifications
+Any changes made specifically in this mirror should be
+documented separately, with clear attribution.
 
-  # The features block allows changing the behaviour of the Azure Provider, more
-  # information can be found here:
-  # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/features-block
-  features {}
-}
-
-# 3. Create a resource group
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = "West Europe"
-}
-
-# 4. Create a virtual network within the resource group
-resource "azurerm_virtual_network" "example" {
-  name                = "example-network"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
-  address_space       = ["10.0.0.0/16"]
-}
-```
-
-* [Usage documentation for the AzureRM Provider can be found in the Terraform Registry](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs).
-* [Learn more about Terraform and the AzureRM Provider on HashiCorp Learn](https://learn.hashicorp.com/collections/terraform/azure-get-started).
-* [Additional examples can be found in the `./examples` folder within this repository](https://github.com/hashicorp/terraform-provider-azurerm/tree/main/examples).
-
-## Developing & Contributing to the Provider
-
-The [DEVELOPER.md](DEVELOPER.md) file is a basic outline on how to build and develop the provider while more detailed guides geared towards contributors can be found in the [`/contributing`](https://github.com/hashicorp/terraform-provider-azurerm/tree/main/contributing) directory of this repository.
+## License
+Refer to the upstream LICENSE file and applicable
+license notices for usage and redistribution requirements.
